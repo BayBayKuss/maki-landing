@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maki – SKT ve Stok Takibi | Kurumsal Envanter Yönetimi</title>
+  <meta name="description" content="Maki ile barkod tabanlı stok takibi, SKT yönetimi ve kurumsal satın alma onay süreçlerini tek platformda yönetin. Operasyonel verimliliğinizi artırın, fire oranlarını minimize edin." />
+  <meta name="keywords" content="stok takibi, SKT yönetimi, barkod tarama, envanter yönetimi, kurumsal satın alma, fire azaltma" />
+  <meta property="og:title" content="Maki – SKT ve Stok Takibi" />
+  <meta property="og:description" content="Operasyonel verimliliğinizi artırın, fire oranlarını minimize edin." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://maki.furowlan.com" />
+  <link rel="canonical" href="https://maki.furowlan.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #882DFF;
+      --purple-dim: #6B1FD4;
+      --purple-light: #F3EAFF;
+      --purple-mid: #C89BFF;
+      --ink: #0D0D12;
+      --ink-soft: #3A3A4A;
+      --ink-muted: #7B7B8F;
+      --surface: #FFFFFF;
+      --surface-alt: #F8F7FC;
+      --border: #EBEBF0;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--surface);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      object-fit: cover;
+    }
+
+    .logo-fallback {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--ink); background: var(--surface-alt); }
+
+    .btn-nav {
+      background: var(--purple) !important;
+      color: #fff !important;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      padding: 9px 18px !important;
+      transition: background 0.15s, transform 0.1s !important;
+    }
+    .btn-nav:hover { background: var(--purple-dim) !important; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      padding: 100px 28px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.14;
+    }
+
+    .hero-blob-1 {
+      width: 700px;
+      height: 700px;
+      background: var(--purple);
+      top: -200px;
+      right: -150px;
+    }
+
+    .hero-blob-2 {
+      width: 400px;
+      height: 400px;
+      background: #C89BFF;
+      bottom: -100px;
+      left: -80px;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 56px 56px;
+      opacity: 0.4;
+      mask-image: radial-gradient(ellipse 80% 60% at 60% 20%, black 30%, transparent 80%);
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple-light);
+      border: 1px solid rgba(136, 45, 255, 0.18);
+      border-radius: 100px;
+      padding: 6px 14px 6px 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--purple);
+      margin-bottom: 28px;
+      letter-spacing: 0.2px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--purple);
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      color: var(--ink);
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--purple);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      max-width: 480px;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple);
+      color: #fff;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 26px;
+      border-radius: 12px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.12s, box-shadow 0.15s;
+      box-shadow: 0 4px 20px rgba(136,45,255,0.28);
+      letter-spacing: -0.2px;
+    }
+
+    .btn-primary:hover {
+      background: var(--purple-dim);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(136,45,255,0.36);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--ink-soft);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--purple);
+      color: var(--purple);
+      background: var(--purple-light);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-stat-item { }
+    .hero-stat-num {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.8px;
+    }
+    .hero-stat-num span { color: var(--purple); }
+    .hero-stat-label {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-mockup {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .phone-frame {
+      background: var(--ink);
+      border-radius: 44px;
+      padding: 14px;
+      box-shadow:
+        0 40px 80px rgba(13,13,18,0.35),
+        0 0 0 1px rgba(255,255,255,0.08),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
+      position: relative;
+    }
+
+    .phone-screen {
+      background: var(--surface-alt);
+      border-radius: 32px;
+      overflow: hidden;
+      aspect-ratio: 9/19;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .phone-screen-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink-muted);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .phone-screen-placeholder svg {
+      opacity: 0.35;
+    }
+
+    .phone-screen-placeholder p {
+      font-size: 12px;
+      line-height: 1.5;
+      opacity: 0.6;
+    }
+
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-float-card {
+      position: absolute;
+      background: white;
+      border-radius: 14px;
+      padding: 14px 18px;
+      box-shadow: 0 8px 40px rgba(13,13,18,0.14), 0 0 0 1px var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: float-card 3s ease-in-out infinite;
+    }
+
+    @keyframes float-card {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .float-card-left {
+      left: -60px;
+      bottom: 120px;
+      animation-delay: 0.5s;
+    }
+
+    .float-card-right {
+      right: -50px;
+      top: 100px;
+      animation-delay: 1.2s;
+    }
+
+    .float-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .float-icon-green { background: #ECFDF3; }
+    .float-icon-purple { background: var(--purple-light); }
+
+    .float-text-main {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .float-text-sub {
+      font-size: 11px;
+      color: var(--ink-muted);
+      white-space: nowrap;
+    }
+
+    /* ── LOGOS STRIP ── */
+    .logos-strip {
+      padding: 40px 28px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-alt);
+    }
+
+    .logos-strip-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .strip-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-right: 36px;
+      white-space: nowrap;
+    }
+
+    .tech-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      margin: 4px 6px;
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 100px 28px;
+      background: var(--surface);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 64px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.12;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+
+    .features-grid {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feat-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .feat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--purple-mid));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .feat-card:hover {
+      border-color: rgba(136,45,255,0.3);
+      box-shadow: 0 12px 40px rgba(136,45,255,0.1);
+      transform: translateY(-4px);
+    }
+
+    .feat-card:hover::before { opacity: 1; }
+
+    .feat-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--purple-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 24px;
+    }
+
+    .feat-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .feat-desc {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    .feat-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 20px;
+    }
+
+    .feat-tag {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--purple);
+      background: var(--purple-light);
+      border-radius: 6px;
+      padding: 4px 10px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 100px 28px;
+      background: var(--surface-alt);
+    }
+
+    .how-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 64px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5% + 28px);
+      right: calc(12.5% + 28px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--purple), var(--purple-mid), var(--purple));
+      opacity: 0.3;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--purple);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* ── SCREENSHOTS ── */
+    .screenshots {
+      padding: 100px 28px;
+      background: var(--surface);
+    }
+
+    .screenshots-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .screenshots-scroll {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .ss-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--ink);
+      aspect-ratio: 9/18;
+      box-shadow: 0 20px 50px rgba(13,13,18,0.22);
+      border: 8px solid var(--ink);
+    }
+
+    .ss-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 13px;
+    }
+
+    .ss-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #1A1A2E, #2D1B6B);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      border-radius: 13px;
+    }
+
+    .ss-placeholder-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(136,45,255,0.3);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .ss-placeholder-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 0 16px;
+      line-height: 1.5;
+    }
+
+    .ss-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      padding: 30px 16px 16px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      text-align: center;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 100px 28px;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 25% 50%, rgba(136,45,255,0.3) 0%, transparent 60%),
+        radial-gradient(circle at 75% 50%, rgba(200,155,255,0.15) 0%, transparent 60%);
+    }
+
+    .cta-inner {
+      position: relative;
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-inner .section-label { color: var(--purple-mid); }
+
+    .cta-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1.2px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform 0.12s, box-shadow 0.15s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    .btn-outline-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+
+    .btn-outline-white:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: #fff;
+      background: rgba(255,255,255,0.07);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 48px 28px 36px;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .nav-logo-text { color: #fff; font-size: 18px; }
+
+    .footer-desc {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      margin-top: 14px;
+      max-width: 280px;
+    }
+
+    .footer-col-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 16px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: color 0.15s;
+    }
+
+    .footer-col a:hover { color: #fff; }
+
+    .footer-bottom {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual { display: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .steps::before { display: none; }
+      .screenshots-scroll { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 80px 20px 60px; }
+      .features, .how, .screenshots, .cta-section { padding: 72px 20px; }
+      .screenshots-scroll { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.45s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="assets/logo.png" alt="Maki Logo"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      <div class="logo-fallback" style="display:none;">M</div>
+      <span class="nav-logo-text">Maki</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Özellikler</a>
+      <a href="#how">Nasıl Çalışır</a>
+      <a href="#screenshots">Ekranlar</a>
+      <a href="mailto:contact@furowlan.com" class="btn-nav">İletişime Geçin</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="hero-inner">
+    <!-- Left -->
+    <div>
+      <div class="hero-badge fade-up">
+        <span class="badge-dot"></span>
+        Kurumsal Envanter Çözümü
+      </div>
+      <h1 class="fade-up delay-1">
+        SKT ve Stok Takibi<br/>
+        <span>Yeniden Tanımlandı.</span>
+      </h1>
+      <p class="hero-sub fade-up delay-2">
+        Operasyonel verimliliğinizi artırın, fire oranlarını minimize edin. Maki ile stok yönetimini barkod hızında yapın ve kurumsal onay süreçlerini otomatikleştirin.
+      </p>
+      <div class="hero-actions fade-up delay-3">
+        <a href="mailto:contact@furowlan.com" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          İletişime Geçin
+        </a>
+        <a href="#features" class="btn-ghost">
+          Özellikleri Keşfet
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="hero-stats fade-up delay-4">
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">%<span>92</span></div>
+          <div class="hero-stat-label">Fire Azaltma Oranı</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num"><span>3x</span></div>
+          <div class="hero-stat-label">Sayım Hızı Artışı</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num"><span>∞</span></div>
+          <div class="hero-stat-label">Anlık Senkronizasyon</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Phone mockup -->
+    <div class="hero-visual fade-up delay-2">
+      <div class="hero-mockup">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <img src="assets/screenshots/screen1.png" alt="Maki Uygulama Ekranı"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="phone-screen-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#882DFF" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h.01M15 9h.01M9 15h.01M15 15h.01M12 12h.01"/></svg>
+              <p>Ekran görüntüsünü<br/>assets/screenshots/ klasörüne<br/>ekleyin</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-float-card float-card-left">
+          <div class="float-icon float-icon-green">✅</div>
+          <div>
+            <div class="float-text-main">Stok Güncellendi</div>
+            <div class="float-text-sub">48 ürün • Az önce</div>
+          </div>
+        </div>
+
+        <div class="hero-float-card float-card-right">
+          <div class="float-icon float-icon-purple">⚠️</div>
+          <div>
+            <div class="float-text-main">SKT Uyarısı</div>
+            <div class="float-text-sub">3 ürün • 7 gün kaldı</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STRIP -->
+<div class="logos-strip">
+  <div class="logos-strip-inner">
+    <span class="strip-label">Altyapı</span>
+    <span class="tech-chip">🔥 Firebase</span>
+    <span class="tech-chip">☁️ Google Cloud</span>
+    <span class="tech-chip">📱 Android & iOS</span>
+    <span class="tech-chip">🔐 KVKK / GDPR Uyumlu</span>
+    <span class="tech-chip">🔄 Gerçek Zamanlı Senkronizasyon</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-header">
+    <span class="section-label">Özellikler</span>
+    <h2 class="section-title">İşletmenizin ihtiyacı olan<br/>her şey tek uygulamada</h2>
+    <p class="section-sub">Karmaşık envanter süreçlerini sadelik ve hızla yönetin. Maki, saha ekiplerinizden yöneticilere kadar tüm paydaşları tek platformda buluşturur.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon-wrap">📷</div>
+      <h3 class="feat-title">Hızlı Barkod Tarama</h3>
+      <p class="feat-desc">Cihaz kamerasıyla milisaniyeler içinde barkod okuyun. Tek dokunuşla ürün bilgisi, SKT ve stok durumu ekranınıza gelsin. Manuel giriş hatalarını tarihe gömün.</p>
+      <div class="feat-tags">
+        <span class="feat-tag">QR & Barkod</span>
+        <span class="feat-tag">Hızlı Tarama</span>
+        <span class="feat-tag">Offline Modu</span>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon-wrap">⚡</div>
+      <h3 class="feat-title">Anlık Stok Güncelleme</h3>
+      <p class="feat-desc">Firebase altyapısı üzerinde gerçek zamanlı senkronizasyon. Bir cihazda yapılan güncelleme, tüm ekip üyelerine anında yansır. Stok çakışmalarına son.</p>
+      <div class="feat-tags">
+        <span class="feat-tag">Gerçek Zamanlı</span>
+        <span class="feat-tag">Çoklu Cihaz</span>
+        <span class="feat-tag">Firebase Sync</span>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon-wrap">✅</div>
+      <h3 class="feat-title">Kurumsal Satın Alma Onay Süreci</h3>
+      <p class="feat-desc">Stok eşiği dolduğunda otomatik satın alma talebi oluştur. Yönetici onayı iş akışı, red/kabul bildirimleri ve tam denetim izi ile kurumsal uyum sağlayın.</p>
+      <div class="feat-tags">
+        <span class="feat-tag">Onay Akışı</span>
+        <span class="feat-tag">Bildirimler</span>
+        <span class="feat-tag">Denetim İzi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="section-header">
+      <span class="section-label">Nasıl Çalışır</span>
+      <h2 class="section-title">4 adımda tam kontrol</h2>
+      <p class="section-sub">Kurumunuza özgü yapılandırma ile dakikalar içinde aktif olun.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Kurulum & Yapılandırma</div>
+        <div class="step-desc">Uygulamayı indirin, kurumunuzu kayıt edin, ekip üyelerinizi davet edin.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Ürün Kataloğu</div>
+        <div class="step-desc">Barkod tarayarak veya manuel olarak ürünlerinizi sisteme tanıtın.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Sayım & Takip</div>
+        <div class="step-desc">Saha ekipleriniz anlık sayım yapar, SKT uyarıları otomatik tetiklenir.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Onay & Raporlama</div>
+        <div class="step-desc">Yöneticiler satın alma taleplerini onaylar, raporları anında görüntüler.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screenshots" id="screenshots">
+  <div class="screenshots-inner">
+    <div class="section-header">
+      <span class="section-label">Uygulama Ekranları</span>
+      <h2 class="section-title">Tasarlandı, rafine edildi,<br/>kullanıma hazır</h2>
+      <p class="section-sub">Sezgisel arayüz ile ekibiniz en az eğitimle maksimum verim elde eder.</p>
+    </div>
+
+    <div class="screenshots-scroll">
+      <div class="ss-frame">
+        <img src="assets/screenshots/screen2.png" alt="Stok Listesi Ekranı"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="ss-placeholder">
+          <div class="ss-placeholder-icon">📦</div>
+          <div class="ss-placeholder-text">Stok Listesi<br/>Ekranı</div>
+        </div>
+        <div class="ss-label">Stok Listesi</div>
+      </div>
+
+      <div class="ss-frame">
+        <img src="assets/screenshots/screen3.png" alt="Barkod Tarama Ekranı"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="ss-placeholder">
+          <div class="ss-placeholder-icon">🔍</div>
+          <div class="ss-placeholder-text">Barkod Tarama<br/>Ekranı</div>
+        </div>
+        <div class="ss-label">Barkod Tarama</div>
+      </div>
+
+      <div class="ss-frame">
+        <img src="assets/screenshots/screen4.png" alt="Onay Süreci Ekranı"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="ss-placeholder">
+          <div class="ss-placeholder-icon">✅</div>
+          <div class="ss-placeholder-text">Satın Alma Onay<br/>Ekranı</div>
+        </div>
+        <div class="ss-label">Onay Süreci</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <span class="section-label">Başlamaya Hazır mısınız?</span>
+    <h2 class="cta-title">İşletmenizi bir üst seviyeye taşıyın</h2>
+    <p class="cta-sub">Maki ile stok yönetimini modernleştirin. Demo talep edin veya doğrudan iletişime geçin — ekibimiz 24 saat içinde yanıt verir.</p>
+    <div class="cta-actions">
+      <a href="mailto:contact@furowlan.com" class="btn-white">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Demo Talep Et
+      </a>
+      <a href="privacy.html" class="btn-outline-white">Gizlilik Politikası</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="nav-logo">
+        <img src="assets/logo.png" alt="Maki Logo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="logo-fallback" style="display:none;">M</div>
+        <span class="nav-logo-text">Maki</span>
+      </a>
+      <p class="footer-desc">SKT ve Stok Takibi — Barkod tabanlı, gerçek zamanlı, kurumsal envanter yönetim platformu.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Ürün</div>
+      <a href="#features">Özellikler</a>
+      <a href="#how">Nasıl Çalışır</a>
+      <a href="#screenshots">Ekran Görüntüleri</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">İletişim</div>
+      <a href="mailto:contact@furowlan.com">contact@furowlan.com</a>
+      <a href="privacy.html">Gizlilik Politikası</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2024 Maki. Tüm hakları saklıdır.</span>
+    <div class="footer-links">
+      <a href="privacy.html">Gizlilik Politikası</a>
+      <a href="mailto:contact@furowlan.com">İletişim</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

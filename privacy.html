@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gizlilik Politikası – Maki: SKT ve Stok Takibi</title>
+  <meta name="description" content="Maki uygulamasına ait gizlilik politikası. KVKK ve GDPR uyumlu kişisel veri işleme ilkeleri." />
+  <link rel="canonical" href="https://maki.furowlan.com/privacy.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #882DFF;
+      --purple-dim: #6B1FD4;
+      --purple-light: #F3EAFF;
+      --ink: #0D0D12;
+      --ink-soft: #3A3A4A;
+      --ink-muted: #7B7B8F;
+      --surface: #FFFFFF;
+      --surface-alt: #F8F7FC;
+      --border: #EBEBF0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--surface-alt);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .logo-fallback {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .nav-back {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .nav-back:hover { color: var(--purple); border-color: var(--purple); }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: var(--ink);
+      padding: 64px 28px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 50%, rgba(136,45,255,0.25) 0%, transparent 60%);
+    }
+
+    .page-header-inner {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .page-tag {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #C89BFF;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+
+    .page-header-meta {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* CONTENT */
+    .content-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 28px 80px;
+    }
+
+    .toc-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+    }
+
+    .toc-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+
+    .toc-list li a {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--purple);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 0;
+      transition: opacity 0.15s;
+    }
+
+    .toc-list li a:hover { opacity: 0.7; }
+
+    .toc-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink-muted);
+      font-family: 'DM Mono', monospace;
+      min-width: 20px;
+    }
+
+    /* SECTIONS */
+    .policy-section {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-bottom: 20px;
+      scroll-margin-top: 90px;
+    }
+
+    .section-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .policy-section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.4px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .policy-section p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      margin-bottom: 14px;
+    }
+
+    .policy-section p:last-child { margin-bottom: 0; }
+
+    .policy-section ul, .policy-section ol {
+      padding-left: 20px;
+      margin: 12px 0 16px;
+    }
+
+    .policy-section li {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+
+    .policy-section strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .info-box {
+      background: var(--purple-light);
+      border: 1px solid rgba(136,45,255,0.18);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 18px 0;
+      font-size: 14px;
+      color: var(--purple-dim);
+      line-height: 1.65;
+    }
+
+    .info-box strong { color: var(--purple-dim); }
+
+    .highlight-box {
+      background: #ECFDF3;
+      border: 1px solid #BBF7D0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 18px 0;
+      font-size: 14px;
+      color: #166534;
+      line-height: 1.65;
+    }
+
+    .contact-box {
+      background: var(--ink);
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-top: 40px;
+    }
+
+    .contact-box h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .contact-box p {
+      font-size: 14.5px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .contact-box a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple);
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .contact-box a:hover { background: var(--purple-dim); }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 28px;
+    }
+
+    .footer-mini {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    .footer-link {
+      font-size: 13px;
+      color: var(--purple);
+      text-decoration: none;
+    }
+
+    .footer-link:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .toc-list { grid-template-columns: 1fr; }
+      .policy-section { padding: 28px 24px; }
+      .content-wrap { padding: 40px 20px 60px; }
+      .contact-box { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="assets/logo.png" alt="Maki Logo"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      <div class="logo-fallback" style="display:none;">M</div>
+      <span class="nav-logo-text">Maki</span>
+    </a>
+    <a href="index.html" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      Ana Sayfaya Dön
+    </a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <span class="page-tag">Yasal Belge</span>
+    <h1>Gizlilik Politikası</h1>
+    <p class="page-header-meta">Son güncelleme: 11 Mayıs 2026 &nbsp;·&nbsp; Sürüm 2.0 &nbsp;·&nbsp; KVKK Uyumlu</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+  <!-- INTRO -->
+  <div class="toc-card">
+    <p style="font-size:15px;line-height:1.75;color:var(--ink-soft);margin-bottom:12px;">İşbu Gizlilik Politikası, <strong>Furowlan</strong> ("Şirket", "Biz" veya "Bize") tarafından B2B (İşletmeden İşletmeye) modeliyle sunulan <strong>"Maki: SKT ve Stok Takibi"</strong> ("Uygulama") adlı mobil uygulamanın kullanımı sırasında elde edilen verilerin nasıl işlendiğini açıklamaktadır.</p>
+    <p style="font-size:15px;line-height:1.75;color:var(--ink-soft);margin:0;">Uygulamamız genel kullanıma açık bir kayıt sistemine (Sign-up) sahip değildir. Uygulamaya erişim, yalnızca yetkili kurum yöneticileri tarafından tanımlanan personellere sağlanmaktadır.</p>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc-card">
+    <div class="toc-title">İçindekiler</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span class="toc-num">01</span> İşlenen Kişisel Veriler</a></li>
+      <li><a href="#s2"><span class="toc-num">02</span> Cihaz İzinleri (Kamera)</a></li>
+      <li><a href="#s3"><span class="toc-num">03</span> İşlenme Amacı ve Hukuki Sebebi</a></li>
+      <li><a href="#s4"><span class="toc-num">04</span> Saklanma ve Aktarım</a></li>
+      <li><a href="#s5"><span class="toc-num">05</span> Kullanıcı Hakları (KVKK)</a></li>
+    </ul>
+  </div>
+
+  <!-- S1 -->
+  <div class="policy-section" id="s1">
+    <div class="section-num">01 — İşlenen Kişisel Veriler</div>
+    <h2>İşlenen Kişisel Veriler Nelerdir?</h2>
+    <p>Uygulamanın çalışabilmesi ve operasyonel güvenliğin sağlanması amacıyla aşağıdaki veriler işlenmektedir:</p>
+    <p><strong>Kimlik ve İletişim Bilgileri:</strong> Kurum yöneticiniz tarafından sisteme tanımlanan Ad, Soyad, Unvan/Şube ve E-posta adresi.</p>
+    <p><strong>İşlem ve Log Verileri (Denetim İzi):</strong> Stok güvenliğini sağlamak amacıyla; uygulama üzerinden gerçekleştirdiğiniz ürün tarama, satış, iade, indirim talebi işlemleri ve bu işlemlerin tarih/saat bilgileri.</p>
+    <p><strong>Cihaz ve Kullanım Verileri:</strong> Uygulama altyapısının (Google Firebase) stabil çalışabilmesi ve çökme raporlarının analizi için toplanan, kimliğinizle doğrudan eşleştirilemeyen temel cihaz bilgileri (İşletim sistemi, IP adresi).</p>
+  </div>
+
+  <!-- S2 -->
+  <div class="policy-section" id="s2">
+    <div class="section-num">02 — Cihaz İzinleri (Kamera)</div>
+    <h2>Cihaz İzinleri (Kamera)</h2>
+    <p>Uygulama, barkod ve QR kod okuma işlevini gerçekleştirebilmek için cihazınızın kamerasına erişim izni talep eder.</p>
+    <div class="highlight-box">
+      Kamera üzerinden alınan görüntüler yalnızca anlık barkod tespiti için cihaz üzerinde işlenir; hiçbir fotoğraf veya video kaydı alınmaz ve sunucularımıza aktarılmaz.
+    </div>
+  </div>
+
+  <!-- S3 -->
+  <div class="policy-section" id="s3">
+    <div class="section-num">03 — İşlenme Amacı ve Hukuki Sebebi</div>
+    <h2>Verilerin İşlenme Amacı ve Hukuki Sebebi</h2>
+    <p>Kişisel verileriniz, <strong>6698 sayılı KVKK Madde 5/2(c)</strong> "Bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması" ve <strong>Madde 5/2(f)</strong> "Veri sorumlusunun meşru menfaatleri" hukuki sebeplerine dayanarak;</p>
+    <ul>
+      <li>Kurumsal stok ve SKT yönetiminin sağlanması,</li>
+      <li>Şirket içi operasyonel denetimin (yetkilendirme ve loglama) gerçekleştirilmesi</li>
+    </ul>
+    <p>amaçlarıyla işlenmektedir.</p>
+  </div>
+
+  <!-- S4 -->
+  <div class="policy-section" id="s4">
+    <div class="section-num">04 — Saklanma ve Aktarım</div>
+    <h2>Verilerin Saklanması ve Aktarımı</h2>
+    <p>Verileriniz, yüksek güvenlik standartlarına sahip uluslararası bulut altyapı sağlayıcıları (<strong>Google Cloud / Firebase</strong>) üzerinde barındırılmaktadır.</p>
+    <div class="info-box">
+      <strong>Önemli:</strong> Verileriniz, yasal zorunluluklar haricinde kurumunuz dışındaki hiçbir üçüncü şahısla, reklam veya pazarlama amacıyla kesinlikle paylaşılmaz ve satılmaz.
+    </div>
+  </div>
+
+  <!-- S5 -->
+  <div class="policy-section" id="s5">
+    <div class="section-num">05 — Kullanıcı Hakları (KVKK)</div>
+    <h2>Kullanıcı Hakları (KVKK Madde 11)</h2>
+    <p>KVKK kapsamında verilerinizin işlenip işlenmediğini öğrenme, yanlış ise düzeltilmesini talep etme ve silinmesini isteme hakkına sahipsiniz.</p>
+    <p>Uygulama hesapları kurum yöneticileri tarafından yönetildiği için, hesap silme ve veri düzeltme taleplerinizi doğrudan bağlı bulunduğunuz işletmenin yöneticisine veya sistem yöneticisine iletmeniz gerekmektedir.</p>
+    <p>Sistem altyapısı ve genel gizlilik politikamız hakkında sorularınız için <strong>contact@furowlan.com</strong> adresi üzerinden bizimle iletişime geçebilirsiniz.</p>
+  </div>
+
+  <!-- CONTACT CTA -->
+  <div class="contact-box">
+    <h3>Sorunuz mu var?</h3>
+    <p>Gizlilik politikamız veya verilerinizin işlenmesi hakkında her türlü sorunuz için bize ulaşın.</p>
+    <a href="mailto:contact@furowlan.com">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      contact@furowlan.com
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-mini">
+    <span class="footer-copy">© 2026 Maki. Tüm hakları saklıdır.</span>
+    <a href="index.html" class="footer-link">← Ana Sayfaya Dön</a>
+  </div>
+</footer>
+
+</body>
+</html>
