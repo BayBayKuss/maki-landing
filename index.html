@@ -4,13 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maki – SKT ve Stok Takibi | Kurumsal Envanter Yönetimi</title>
-  <meta name="description" content="Maki ile barkod tabanlı stok takibi, SKT yönetimi ve kurumsal satın alma onay süreçlerini tek platformda yönetin. Operasyonel verimliliğinizi artırın, fire oranlarını minimize edin." />
-  <meta name="keywords" content="stok takibi, SKT yönetimi, barkod tarama, envanter yönetimi, kurumsal satın alma, fire azaltma" />
+  <meta name="description" content="Maki, süpermarket zincirlerinin mağaza içi operasyonlarını dijitalleştiren B2B SaaS platformudur. Barkod ile fiyat karşılaştırma, SKT takibi, indirim talebi ve şube stok yönetimi." />
+  <meta name="keywords" content="stok takibi, SKT yönetimi, barkod tarama, fiyat karşılaştırma, şube stok, indirim talebi, süpermarket" />
   <meta property="og:title" content="Maki – SKT ve Stok Takibi" />
-  <meta property="og:description" content="Operasyonel verimliliğinizi artırın, fire oranlarını minimize edin." />
+  <meta property="og:description" content="Süpermarket zincirlerinin mağaza içi operasyonlarını dijitalleştiren B2B SaaS platformu." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://maki.furowlan.com" />
   <link rel="canonical" href="https://maki.furowlan.com" />
+
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="shortcut icon" type="image/png" href="assets/logo.png" />
+  <link rel="apple-touch-icon" href="assets/logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -73,25 +77,11 @@
     }
 
     .nav-logo img {
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
-      object-fit: cover;
-    }
-
-    .logo-fallback {
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
-      background: var(--purple);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 800;
-      font-size: 16px;
-      letter-spacing: -0.5px;
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
       flex-shrink: 0;
+      border-radius: 14px;
     }
 
     .nav-logo-text {
@@ -293,29 +283,6 @@
       background: var(--purple-light);
     }
 
-    .hero-stats {
-      display: flex;
-      gap: 32px;
-      margin-top: 48px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-    }
-
-    .hero-stat-item { }
-    .hero-stat-num {
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--ink);
-      letter-spacing: -0.8px;
-    }
-    .hero-stat-num span { color: var(--purple); }
-    .hero-stat-label {
-      font-size: 12.5px;
-      color: var(--ink-muted);
-      font-weight: 500;
-      margin-top: 2px;
-    }
-
     /* Hero visual */
     .hero-visual {
       position: relative;
@@ -345,34 +312,13 @@
       background: var(--surface-alt);
       border-radius: 32px;
       overflow: hidden;
-      aspect-ratio: 9/19;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      aspect-ratio: 9/19.5;
       position: relative;
     }
 
-    .phone-screen-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      color: var(--ink-muted);
-      text-align: center;
-      padding: 20px;
-    }
-
-    .phone-screen-placeholder svg {
-      opacity: 0.35;
-    }
-
-    .phone-screen-placeholder p {
-      font-size: 12px;
-      line-height: 1.5;
-      opacity: 0.6;
-    }
-
     .phone-screen img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -679,47 +625,18 @@
       border-radius: 20px;
       overflow: hidden;
       background: var(--ink);
-      aspect-ratio: 9/18;
+      aspect-ratio: 9/19.5;
       box-shadow: 0 20px 50px rgba(13,13,18,0.22);
       border: 8px solid var(--ink);
     }
 
     .ss-frame img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 13px;
-    }
-
-    .ss-placeholder {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(145deg, #1A1A2E, #2D1B6B);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      border-radius: 13px;
-    }
-
-    .ss-placeholder-icon {
-      width: 52px;
-      height: 52px;
-      background: rgba(136,45,255,0.3);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-    }
-
-    .ss-placeholder-text {
-      font-size: 13px;
-      color: rgba(255,255,255,0.4);
-      text-align: center;
-      padding: 0 16px;
-      line-height: 1.5;
     }
 
     .ss-label {
@@ -779,6 +696,73 @@
       gap: 14px;
       justify-content: center;
       flex-wrap: wrap;
+    }
+
+    /* ── CONTACT FORM ── */
+    .contact-form {
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--purple);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
     }
 
     .btn-white {
@@ -909,7 +893,6 @@
       }
       .hero-sub { margin-left: auto; margin-right: auto; }
       .hero-actions { justify-content: center; }
-      .hero-stats { justify-content: center; }
       .hero-visual { display: none; }
       .features-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
@@ -949,16 +932,14 @@
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-logo">
-      <img src="assets/logo.png" alt="Maki Logo"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-      <div class="logo-fallback" style="display:none;">M</div>
+      <img src="assets/logo.png" alt="Maki Logo" />
       <span class="nav-logo-text">Maki</span>
     </a>
     <div class="nav-links">
       <a href="#features">Özellikler</a>
       <a href="#how">Nasıl Çalışır</a>
       <a href="#screenshots">Ekranlar</a>
-      <a href="mailto:contact@furowlan.com" class="btn-nav">İletişime Geçin</a>
+      <a href="#contact" class="btn-nav">Demo Talep Et</a>
     </div>
   </div>
 </nav>
@@ -983,31 +964,17 @@
         <span>Yeniden Tanımlandı.</span>
       </h1>
       <p class="hero-sub fade-up delay-2">
-        Operasyonel verimliliğinizi artırın, fire oranlarını minimize edin. Maki ile stok yönetimini barkod hızında yapın ve kurumsal onay süreçlerini otomatikleştirin.
+        Süpermarket zincirlerinin mağaza içi operasyonlarını uçtan uca dijitalleştiren B2B SaaS platformu. Barkod tara, raf fiyatını karşılaştır, SKT'si yaklaşan ürünler için tek tuşla indirim talebi oluştur.
       </p>
       <div class="hero-actions fade-up delay-3">
-        <a href="mailto:contact@furowlan.com" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          İletişime Geçin
+        <a href="#contact" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+          Demo Talep Et
         </a>
         <a href="#features" class="btn-ghost">
           Özellikleri Keşfet
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
-      </div>
-      <div class="hero-stats fade-up delay-4">
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">%<span>92</span></div>
-          <div class="hero-stat-label">Fire Azaltma Oranı</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num"><span>3x</span></div>
-          <div class="hero-stat-label">Sayım Hızı Artışı</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num"><span>∞</span></div>
-          <div class="hero-stat-label">Anlık Senkronizasyon</div>
-        </div>
       </div>
     </div>
 
@@ -1016,20 +983,15 @@
       <div class="hero-mockup">
         <div class="phone-frame">
           <div class="phone-screen">
-            <img src="assets/screenshots/screen1.png" alt="Maki Uygulama Ekranı"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-            <div class="phone-screen-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#882DFF" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h.01M15 9h.01M9 15h.01M15 15h.01M12 12h.01"/></svg>
-              <p>Ekran görüntüsünü<br/>assets/screenshots/ klasörüne<br/>ekleyin</p>
-            </div>
+            <img src="assets/screenshots/screen1.png" alt="Maki Uygulama Ekranı" />
           </div>
         </div>
 
         <div class="hero-float-card float-card-left">
-          <div class="float-icon float-icon-green">✅</div>
+          <div class="float-icon float-icon-green">🏷️</div>
           <div>
-            <div class="float-text-main">Stok Güncellendi</div>
-            <div class="float-text-sub">48 ürün • Az önce</div>
+            <div class="float-text-main">İndirim Onaylandı</div>
+            <div class="float-text-sub">Yoğurt 1kg • %20 indirim</div>
           </div>
         </div>
 
@@ -1037,7 +999,7 @@
           <div class="float-icon float-icon-purple">⚠️</div>
           <div>
             <div class="float-text-main">SKT Uyarısı</div>
-            <div class="float-text-sub">3 ürün • 7 gün kaldı</div>
+            <div class="float-text-sub">7 ürün • Süresi geçti</div>
           </div>
         </div>
       </div>
@@ -1052,7 +1014,6 @@
     <span class="tech-chip">🔥 Firebase</span>
     <span class="tech-chip">☁️ Google Cloud</span>
     <span class="tech-chip">📱 Android & iOS</span>
-    <span class="tech-chip">🔐 KVKK / GDPR Uyumlu</span>
     <span class="tech-chip">🔄 Gerçek Zamanlı Senkronizasyon</span>
   </div>
 </div>
@@ -1062,40 +1023,40 @@
   <div class="section-header">
     <span class="section-label">Özellikler</span>
     <h2 class="section-title">İşletmenizin ihtiyacı olan<br/>her şey tek uygulamada</h2>
-    <p class="section-sub">Karmaşık envanter süreçlerini sadelik ve hızla yönetin. Maki, saha ekiplerinizden yöneticilere kadar tüm paydaşları tek platformda buluşturur.</p>
+    <p class="section-sub">Mağaza personelinden satın alma departmanına, yöneticilere kadar tüm ekipleri rol bazlı tek platformda buluşturur.</p>
   </div>
 
   <div class="features-grid">
     <div class="feat-card">
       <div class="feat-icon-wrap">📷</div>
-      <h3 class="feat-title">Hızlı Barkod Tarama</h3>
-      <p class="feat-desc">Cihaz kamerasıyla milisaniyeler içinde barkod okuyun. Tek dokunuşla ürün bilgisi, SKT ve stok durumu ekranınıza gelsin. Manuel giriş hatalarını tarihe gömün.</p>
+      <h3 class="feat-title">Barkod ile Fiyat & Stok Sorgulama</h3>
+      <p class="feat-desc">Raf üzerindeki ürünün barkodunu tarayın; sistemdeki güncel liste fiyatı, tüm şubelerdeki stok durumu ve SKT bilgisi anında ekranınıza gelsin. Rafta yazılı fiyatla karşılaştırarak tutarsızlıkları yerinde tespit edin.</p>
       <div class="feat-tags">
-        <span class="feat-tag">QR & Barkod</span>
-        <span class="feat-tag">Hızlı Tarama</span>
-        <span class="feat-tag">Offline Modu</span>
+        <span class="feat-tag">Fiyat Karşılaştırma</span>
+        <span class="feat-tag">Şube Stokları</span>
+        <span class="feat-tag">Anlık Sorgulama</span>
       </div>
     </div>
 
     <div class="feat-card">
-      <div class="feat-icon-wrap">⚡</div>
-      <h3 class="feat-title">Anlık Stok Güncelleme</h3>
-      <p class="feat-desc">Firebase altyapısı üzerinde gerçek zamanlı senkronizasyon. Bir cihazda yapılan güncelleme, tüm ekip üyelerine anında yansır. Stok çakışmalarına son.</p>
+      <div class="feat-icon-wrap">⏳</div>
+      <h3 class="feat-title">SKT Takibi & İndirim İş Akışı</h3>
+      <p class="feat-desc">SKT'si yaklaşan ürünler için tek tuşla indirim talebi oluşturun; talep anında merkez ofisteki satın alma departmanına düşer. SKT'si dolan ürünleri "İadeye Sevk Et" ile işaretleyin. İsraf önlenir, kârlılık artar.</p>
       <div class="feat-tags">
-        <span class="feat-tag">Gerçek Zamanlı</span>
-        <span class="feat-tag">Çoklu Cihaz</span>
-        <span class="feat-tag">Firebase Sync</span>
+        <span class="feat-tag">İndirim Talebi</span>
+        <span class="feat-tag">İade Sevk</span>
+        <span class="feat-tag">Satış Kaydı</span>
       </div>
     </div>
 
     <div class="feat-card">
-      <div class="feat-icon-wrap">✅</div>
-      <h3 class="feat-title">Kurumsal Satın Alma Onay Süreci</h3>
-      <p class="feat-desc">Stok eşiği dolduğunda otomatik satın alma talebi oluştur. Yönetici onayı iş akışı, red/kabul bildirimleri ve tam denetim izi ile kurumsal uyum sağlayın.</p>
+      <div class="feat-icon-wrap">📊</div>
+      <h3 class="feat-title">Merkezi Veri & Rol Yönetimi</h3>
+      <p class="feat-desc">Yöneticiler tüm şubelerin fiyat ve SKT listelerini Excel ile toplu yükler, güncellemeler sahaya anlık yansır. RBAC mimarisi ile personel, satın alma ve admin rolleri net ayrılır; cihaz kilidi ile yetkisiz erişim engellenir.</p>
       <div class="feat-tags">
-        <span class="feat-tag">Onay Akışı</span>
-        <span class="feat-tag">Bildirimler</span>
-        <span class="feat-tag">Denetim İzi</span>
+        <span class="feat-tag">Excel Yükleme</span>
+        <span class="feat-tag">RBAC</span>
+        <span class="feat-tag">Cihaz Kilidi</span>
       </div>
     </div>
   </div>
@@ -1114,7 +1075,7 @@
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-title">Kurulum & Yapılandırma</div>
-        <div class="step-desc">Uygulamayı indirin, kurumunuzu kayıt edin, ekip üyelerinizi davet edin.</div>
+        <div class="step-desc">Demo talebi oluşturarak altyapınızı dakikalar içinde kurun. Şirket yönetimi tarafından açılan kurumsal hesaplarla sahada anında kullanıma başlayın.</div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -1128,8 +1089,8 @@
       </div>
       <div class="step">
         <div class="step-num">4</div>
-        <div class="step-title">Onay & Raporlama</div>
-        <div class="step-desc">Yöneticiler satın alma taleplerini onaylar, raporları anında görüntüler.</div>
+        <div class="step-title">İndirim Onay & Raporlama</div>
+        <div class="step-desc">Satın alma departmanı indirim taleplerini değerlendirir, uygun oranı belirler. Yönetim panelinden tüm şubelerin işlem geçmişini anlık takip edin.</div>
       </div>
     </div>
   </div>
@@ -1146,52 +1107,58 @@
 
     <div class="screenshots-scroll">
       <div class="ss-frame">
-        <img src="assets/screenshots/screen2.png" alt="Stok Listesi Ekranı"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-        <div class="ss-placeholder">
-          <div class="ss-placeholder-icon">📦</div>
-          <div class="ss-placeholder-text">Stok Listesi<br/>Ekranı</div>
-        </div>
-        <div class="ss-label">Stok Listesi</div>
+        <img src="assets/screenshots/screen2.png" alt="Barkod Tarama Ekranı" />
+        <div class="ss-label">Barkod Tarama & Şube Stokları</div>
       </div>
 
       <div class="ss-frame">
-        <img src="assets/screenshots/screen3.png" alt="Barkod Tarama Ekranı"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-        <div class="ss-placeholder">
-          <div class="ss-placeholder-icon">🔍</div>
-          <div class="ss-placeholder-text">Barkod Tarama<br/>Ekranı</div>
-        </div>
-        <div class="ss-label">Barkod Tarama</div>
+        <img src="assets/screenshots/screen3.png" alt="SKT Listesi Ekranı" />
+        <div class="ss-label">SKT Listesi</div>
       </div>
 
       <div class="ss-frame">
-        <img src="assets/screenshots/screen4.png" alt="Onay Süreci Ekranı"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-        <div class="ss-placeholder">
-          <div class="ss-placeholder-icon">✅</div>
-          <div class="ss-placeholder-text">Satın Alma Onay<br/>Ekranı</div>
-        </div>
-        <div class="ss-label">Onay Süreci</div>
+        <img src="assets/screenshots/screen4.png" alt="Hızlı İşlem Akışı Ekranı" />
+        <div class="ss-label">Hızlı İşlem Akışı</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
+<!-- CONTACT -->
+<section class="cta-section" id="contact">
   <div class="cta-bg"></div>
   <div class="cta-inner">
-    <span class="section-label">Başlamaya Hazır mısınız?</span>
-    <h2 class="cta-title">İşletmenizi bir üst seviyeye taşıyın</h2>
-    <p class="cta-sub">Maki ile stok yönetimini modernleştirin. Demo talep edin veya doğrudan iletişime geçin — ekibimiz 24 saat içinde yanıt verir.</p>
-    <div class="cta-actions">
-      <a href="mailto:contact@furowlan.com" class="btn-white">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Demo Talep Et
-      </a>
-      <a href="privacy.html" class="btn-outline-white">Gizlilik Politikası</a>
-    </div>
+    <span class="section-label">İletişim</span>
+    <h2 class="cta-title">Demo Talep Edin</h2>
+    <p class="cta-sub">Formu doldurun, ekibimiz 24 saat içinde sizinle iletişime geçsin.</p>
+
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="16a653c9-2c64-42cc-bb43-86f9bff8992b" />
+      <input type="hidden" name="subject" value="Maki Demo Talebi" />
+      <input type="hidden" name="from_name" value="Maki Web Sitesi" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Ad Soyad</label>
+          <input type="text" id="name" name="name" placeholder="Adınız Soyadınız" required />
+        </div>
+        <div class="form-group">
+          <label for="email">E-posta</label>
+          <input type="email" id="email" name="email" placeholder="ornek@sirket.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="company">Şirket Adı</label>
+        <input type="text" id="company" name="company" placeholder="Şirket adınız" />
+      </div>
+      <div class="form-group">
+        <label for="message">Mesaj</label>
+        <textarea id="message" name="message" rows="4" placeholder="Demo hakkında bilgi almak istiyorum..."></textarea>
+      </div>
+      <button type="submit" class="btn-white btn-submit">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+        Gönder
+      </button>
+    </form>
   </div>
 </section>
 
@@ -1200,12 +1167,10 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <a href="/" class="nav-logo">
-        <img src="assets/logo.png" alt="Maki Logo"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-        <div class="logo-fallback" style="display:none;">M</div>
+        <img src="assets/logo.png" alt="Maki Logo" />
         <span class="nav-logo-text">Maki</span>
       </a>
-      <p class="footer-desc">SKT ve Stok Takibi — Barkod tabanlı, gerçek zamanlı, kurumsal envanter yönetim platformu.</p>
+      <p class="footer-desc">Süpermarket zincirlerinin mağaza içi operasyonlarını dijitalleştiren B2B SaaS platformu.</p>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">Ürün</div>
@@ -1221,7 +1186,7 @@
   </div>
 
   <div class="footer-bottom">
-    <span class="footer-copy">© 2024 Maki. Tüm hakları saklıdır.</span>
+    <span class="footer-copy">© 2026 Maki. Tüm hakları saklıdır.</span>
     <div class="footer-links">
       <a href="privacy.html">Gizlilik Politikası</a>
       <a href="mailto:contact@furowlan.com">İletişim</a>
