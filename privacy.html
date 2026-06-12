@@ -12,363 +12,18 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --purple: #882DFF;
-      --purple-dim: #6B1FD4;
-      --purple-light: #F3EAFF;
-      --ink: #0D0D12;
-      --ink-soft: #3A3A4A;
-      --ink-muted: #7B7B8F;
-      --surface: #FFFFFF;
-      --surface-alt: #F8F7FC;
-      --border: #EBEBF0;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--surface-alt);
-      color: var(--ink);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 28px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .nav-logo img {
-      width: 36px;
-      height: 36px;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-
-    .logo-fallback {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--purple);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 800;
-      font-size: 15px;
-      flex-shrink: 0;
-    }
-
-    .nav-logo-text {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .nav-back {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink-soft);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      border-radius: 8px;
-      border: 1.5px solid var(--border);
-      transition: color 0.15s, border-color 0.15s;
-    }
-
-    .nav-back:hover { color: var(--purple); border-color: var(--purple); }
-
-    /* PAGE HEADER */
-    .page-header {
-      background: var(--ink);
-      padding: 64px 28px 56px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .page-header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 70% 50%, rgba(136,45,255,0.25) 0%, transparent 60%);
-    }
-
-    .page-header-inner {
-      position: relative;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .page-tag {
-      display: inline-block;
-      font-size: 11.5px;
-      font-weight: 700;
-      color: #C89BFF;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 16px;
-    }
-
-    .page-header h1 {
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -1px;
-      line-height: 1.12;
-      margin-bottom: 16px;
-    }
-
-    .page-header-meta {
-      font-size: 14px;
-      color: rgba(255,255,255,0.45);
-    }
-
-    /* CONTENT */
-    .content-wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 56px 28px 80px;
-    }
-
-    .toc-card {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 16px;
-      padding: 28px 32px;
-      margin-bottom: 48px;
-    }
-
-    .toc-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ink-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 16px;
-    }
-
-    .toc-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px 24px;
-    }
-
-    .toc-list li a {
-      font-size: 13.5px;
-      font-weight: 500;
-      color: var(--purple);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 0;
-      transition: opacity 0.15s;
-    }
-
-    .toc-list li a:hover { opacity: 0.7; }
-
-    .toc-num {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--ink-muted);
-      font-family: 'DM Mono', monospace;
-      min-width: 20px;
-    }
-
-    /* SECTIONS */
-    .policy-section {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 16px;
-      padding: 36px 40px;
-      margin-bottom: 20px;
-      scroll-margin-top: 90px;
-    }
-
-    .section-num {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--purple);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 8px;
-      font-family: 'DM Mono', monospace;
-    }
-
-    .policy-section h2 {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.4px;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .policy-section p {
-      font-size: 15px;
-      line-height: 1.75;
-      color: var(--ink-soft);
-      margin-bottom: 14px;
-    }
-
-    .policy-section p:last-child { margin-bottom: 0; }
-
-    .policy-section ul, .policy-section ol {
-      padding-left: 20px;
-      margin: 12px 0 16px;
-    }
-
-    .policy-section li {
-      font-size: 15px;
-      line-height: 1.75;
-      color: var(--ink-soft);
-      margin-bottom: 8px;
-    }
-
-    .policy-section strong {
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    .info-box {
-      background: var(--purple-light);
-      border: 1px solid rgba(136,45,255,0.18);
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin: 18px 0;
-      font-size: 14px;
-      color: var(--purple-dim);
-      line-height: 1.65;
-    }
-
-    .info-box strong { color: var(--purple-dim); }
-
-    .highlight-box {
-      background: #ECFDF3;
-      border: 1px solid #BBF7D0;
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin: 18px 0;
-      font-size: 14px;
-      color: #166534;
-      line-height: 1.65;
-    }
-
-    .contact-box {
-      background: var(--ink);
-      border-radius: 16px;
-      padding: 36px 40px;
-      margin-top: 40px;
-    }
-
-    .contact-box h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 12px;
-    }
-
-    .contact-box p {
-      font-size: 14.5px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.65;
-      margin-bottom: 20px;
-    }
-
-    .contact-box a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--purple);
-      color: #fff;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 12px 22px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: background 0.15s;
-    }
-
-    .contact-box a:hover { background: var(--purple-dim); }
-
-    footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 28px;
-    }
-
-    .footer-mini {
-      max-width: 760px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-copy {
-      font-size: 13px;
-      color: var(--ink-muted);
-    }
-
-    .footer-link {
-      font-size: 13px;
-      color: var(--purple);
-      text-decoration: none;
-    }
-
-    .footer-link:hover { text-decoration: underline; }
-
-    @media (max-width: 600px) {
-      .toc-list { grid-template-columns: 1fr; }
-      .policy-section { padding: 28px 24px; }
-      .content-wrap { padding: 40px 20px 60px; }
-      .contact-box { padding: 28px 24px; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/privacy.css" />
 </head>
 <body>
 
-<nav>
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav scrolled" id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo">
-      <img src="assets/logo.png" alt="Maki Logo"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-      <div class="logo-fallback" style="display:none;">M</div>
+      <img src="assets/logo.png" alt="Maki Logo" />
       <span class="nav-logo-text">Maki</span>
     </a>
     <a href="index.html" class="nav-back">
@@ -378,6 +33,7 @@
   </div>
 </nav>
 
+<!-- ═══════════ PAGE HEADER ═══════════ -->
 <div class="page-header">
   <div class="page-header-inner">
     <span class="page-tag">Yasal Belge</span>
@@ -386,12 +42,13 @@
   </div>
 </div>
 
+<!-- ═══════════ CONTENT ═══════════ -->
 <div class="content-wrap">
 
   <!-- INTRO -->
   <div class="toc-card">
-    <p style="font-size:15px;line-height:1.75;color:var(--ink-soft);margin-bottom:12px;">İşbu Gizlilik Politikası, <strong>Furowlan</strong> ("Şirket", "Biz" veya "Bize") tarafından B2B (İşletmeden İşletmeye) modeliyle sunulan <strong>"Maki: SKT ve Stok Takibi"</strong> ("Uygulama") adlı mobil uygulamanın kullanımı sırasında elde edilen verilerin nasıl işlendiğini açıklamaktadır.</p>
-    <p style="font-size:15px;line-height:1.75;color:var(--ink-soft);margin:0;">Uygulamamız genel kullanıma açık bir kayıt sistemine (Sign-up) sahip değildir. Uygulamaya erişim, yalnızca yetkili kurum yöneticileri tarafından tanımlanan personellere sağlanmaktadır.</p>
+    <p class="toc-intro">İşbu Gizlilik Politikası, <strong>Furowlan</strong> ("Şirket", "Biz" veya "Bize") tarafından B2B (İşletmeden İşletmeye) modeliyle sunulan <strong>"Maki: SKT ve Stok Takibi"</strong> ("Uygulama") adlı mobil uygulamanın kullanımı sırasında elde edilen verilerin nasıl işlendiğini açıklamaktadır.</p>
+    <p class="toc-intro">Uygulamamız genel kullanıma açık bir kayıt sistemine (Sign-up) sahip değildir. Uygulamaya erişim, yalnızca yetkili kurum yöneticileri tarafından tanımlanan personellere sağlanmaktadır.</p>
   </div>
 
   <!-- TOC -->
@@ -469,9 +126,10 @@
 
 </div>
 
-<footer>
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer-mini-bar">
   <div class="footer-mini">
-    <span class="footer-copy">© 2026 Maki. Tüm hakları saklıdır.</span>
+    <span class="footer-copy">© 2026 MAKİ — TÜM HAKLARI SAKLIDIR</span>
     <a href="index.html" class="footer-link">← Ana Sayfaya Dön</a>
   </div>
 </footer>
